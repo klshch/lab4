@@ -72,3 +72,9 @@ def info():
         return render_template('info.html', os_info=os_info, user_agent=user_agent, current_time=current_time)
     else:
         return redirect(url_for('form'))
+
+@app.route('/clearsession', methods=["GET"])
+def clear_session():
+    session.pop("username", None)
+    return redirect(url_for("form"))
+
