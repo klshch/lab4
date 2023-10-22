@@ -61,4 +61,14 @@ def form():
         if name in users and users[name] == password:
             session["username"] = name
             return redirect(url_for("info"))
+        
     return render_template('form.html', os_info=os_info, user_agent=user_agent, current_time=current_time)
+
+@app.route('/info')
+def info():
+    os_info, user_agent, current_time = get_system_info()
+    
+    if session.get("username"):
+        return render_template('info.html', os_info=os_info, user_agent=user_agent, current_time=current_time)
+    else:
+        return redirect(url_for('form'))
