@@ -1,12 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %} Інформація {% endblock %}
+{% block title %} Info page {% endblock %}
 
 {% block content %}
 
-<h1>Інформація</h1>
+<h1>Info page</h1>
 <br>
 <br>
 <p>Вітаю, {{ session["username"] }}!</p>
+<br>
+<br>
+<p class="text-danger">Якщо ви бажаєте вийти з системи та видалити дані із сесії натисніть на кнопку:</p>
+<form action="{{ url_for('clear_session') }}" method="GET">
+    <button type="submit" class="btn btn-danger">Вийти</button>
+</form>
    
 {% endblock %}
